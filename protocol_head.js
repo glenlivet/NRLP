@@ -18,6 +18,13 @@ var PROTOCOL_REQUEST_START = 5;
 //´«Êä¿ªÊ¼
 var PROTOCOL_TRANSFER_START = 6;
 
+var PROTOCOL_ERROR_INCOMPLETE = 0;
+var PROTOCOL_ERROR_INCOMPATIBLE_VERSION = -1;
+var PROTOCOL_ERROR_UNKNOWN_PROTOCOL_NAME = -2;
+var PROTOCOL_ERROR_UNKNOWN_MESSAGE_TYPE = -3;
+
+var PROTOCOL_HEAD_OK = 1;
+
 /**
  * 
  */
@@ -44,10 +51,33 @@ var getMessageTypeBuffer = function(type){
 	return buf;
 };
 
+var validateProtocolHead = function(block){
+    if(block.length < 8){
+        return PROTOCOL_ERROR_INCOMPLETE;    
+    }
+    var head = new Buffer(8);
+    block.copy(head, 0, 0, 8);
+    var _head = getProtocolHead(PROTOCOL_BROADCAST_REQUEST);
+    for(var i=0; i<6;i++){
+        if(head[i] !== _head[i]){
+            return PROTOCOL_ERROR_UNKNOWN_PROTOCOL_NAME;
+        }
+    }
+    if(head[6] !== _head[6]){
+        return PROTOCOL_ERROR_INCOMPATIBLE_VERSION;    
+    }
+    if(head[7] > 6 || head[7] < 1){
+        return PROTOCOL_ERROR_UNKNOWN_MESSAGE_TYPE;
+    }
+
+    //ELSE
+    return PROTOCOL_HEAD_OK;
+    
+};
+
 
 var buf = getProtocolHead(PROTOCOL_REQUEST_PERMISSION);
-console.log(buf.length);
-for(var i = 0 ; i < buf.length; i++){
-	console.log(buf[i]);
-}
 
+var rtn = validateProtocolHead(buf);
+
+console.log(rtn);

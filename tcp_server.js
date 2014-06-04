@@ -22,8 +22,8 @@ fs.open(FILE, 'r', function(err, fd){
                 console.log('server disconnected');
             });
             
-            //transfer(fd, c, fileSize);
-            c.end('123');
+            transfer(fd, c, fileSize);
+            //c.end('123');
             
 
         });

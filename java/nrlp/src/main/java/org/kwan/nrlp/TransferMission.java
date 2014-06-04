@@ -15,6 +15,16 @@ public interface TransferMission {
 	 */
 	public Resource getResource();
 	
+	/**
+	 * 传输任务ID
+	 * @return
+	 */
+	public String getId();
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public TransferConfig getTransferConfig();
 
 }

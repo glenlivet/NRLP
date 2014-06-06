@@ -23,7 +23,18 @@ var PROTOCOL_ERROR_INCOMPATIBLE_VERSION = -1;
 var PROTOCOL_ERROR_UNKNOWN_PROTOCOL_NAME = -2;
 var PROTOCOL_ERROR_UNKNOWN_MESSAGE_TYPE = -3;
 
-var PROTOCOL_HEAD_OK = 1;
+//输出常量
+module.exports.PROTOCOL_BROADCAST_REQUEST = PROTOCOL_BROADCAST_REQUEST;
+module.exports.PROTOCOL_PROPOSAL_PROVISION = PROTOCOL_PROPOSAL_PROVISION;
+module.exports.PROTOCOL_RESOURCE_REQUEST = PROTOCOL_RESOURCE_REQUEST;
+module.exports.PROTOCOL_REQUEST_PERMISSION = PROTOCOL_REQUEST_PERMISSION;
+module.exports.PROTOCOL_REQUEST_START = PROTOCOL_REQUEST_START;
+module.exports.PROTOCOL_TRANSFER_START = PROTOCOL_TRANSFER_START;
+
+module.exports.PROTOCOL_ERROR_INCOMPLETE = PROTOCOL_ERROR_INCOMPLETE;
+module.exports.PROTOCOL_ERROR_INCOMPATIBLE_VERSION = PROTOCOL_ERROR_INCOMPATIBLE_VERSION;
+module.exports.PROTOCOL_ERROR_UNKNOWN_PROTOCOL_NAME = PROTOCOL_ERROR_UNKNOWN_PROTOCOL_NAME;
+module.exports.PROTOCOL_ERROR_UNKNOWN_MESSAGE_TYPE = PROTOCOL_ERROR_UNKNOWN_MESSAGE_TYPE;
 
 /**
  * 
@@ -51,6 +62,13 @@ var getMessageTypeBuffer = function(type){
 	return buf;
 };
 
+/**
+ * 验证协议头。
+ * @param block 接收到的信息包. 
+ * @return 当协议头不正确时，返回 小于等于零 的标识码。
+ *			当协议正确时，返回该消息的种类标识码。
+ *
+ */
 var validateProtocolHead = function(block){
     if(block.length < 8){
         return PROTOCOL_ERROR_INCOMPLETE;    
@@ -71,13 +89,17 @@ var validateProtocolHead = function(block){
     }
 
     //ELSE
-    return PROTOCOL_HEAD_OK;
+    return head[7];
     
 };
 
+//输出方法
+module.exports.validateProtocolHead = validateProtocolHead;
 
-var buf = getProtocolHead(PROTOCOL_REQUEST_PERMISSION);
+var test = function(){
+	var buf = getProtocolHead(PROTOCOL_REQUEST_PERMISSION);
+	var rtn = validateProtocolHead(buf);
+	console.log(rtn);
+};
 
-var rtn = validateProtocolHead(buf);
-
-console.log(rtn);
+module.exports.test = test;

@@ -23,6 +23,7 @@ public interface TransferMission {
 	
 	/**
 	 * 
+	 * 传输
 	 * @return
 	 */
 	public TransferConfig getTransferConfig();

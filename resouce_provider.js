@@ -56,8 +56,8 @@ var onMqttMessageArrived = function(topic, message){
  */
 var onRequestBroadcastArrived = function(block){
 	try{
-		//广播请求对象
-		var requestBroadcast =  nrsl.parse(block);
+		//广播请求对象 //TODO 常量赋值
+		var requestBroadcast =  nrsl.parse(block, PROTOCOL_BROADCAST_REQUEST);
 		//做验证：包括是否含有该请求资源，该客户是否有权限等。
 		var rtnCode = validateRequestBroadcast(requestBroadcast);
 		//根据 rtnCode 做相应的回应

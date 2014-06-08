@@ -5,17 +5,17 @@ var bops	= require('bops');
 var PROTOCOL_NAME = 'NRLP';
 var PROTOCOL_VERSION = 1;
 
-//¹ã²¥ÇëÇó
+//ï¿½ã²¥ï¿½ï¿½ï¿½ï¿½
 var PROTOCOL_BROADCAST_REQUEST = 1;
-//Ìá¹©·½°¸
+//ï¿½á¹©ï¿½ï¿½ï¿½ï¿½
 var PROTOCOL_PROPOSAL_PROVISION = 2;
-//ÇëÇó×ÊÔ´
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
 var PROTOCOL_RESOURCE_REQUEST = 3;
-//ÇëÇó´ð¸´
+//ï¿½ï¿½ï¿½ï¿½ï¿½
 var PROTOCOL_REQUEST_PERMISSION = 4;
-//ÇëÇó¿ªÊ¼´«Êä
+//ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
 var PROTOCOL_REQUEST_START = 5;
-//´«Êä¿ªÊ¼
+//ï¿½ï¿½ï¿½ä¿ªÊ¼
 var PROTOCOL_TRANSFER_START = 6;
 
 var PROTOCOL_ERROR_INCOMPLETE = 0;
@@ -23,7 +23,7 @@ var PROTOCOL_ERROR_INCOMPATIBLE_VERSION = -1;
 var PROTOCOL_ERROR_UNKNOWN_PROTOCOL_NAME = -2;
 var PROTOCOL_ERROR_UNKNOWN_MESSAGE_TYPE = -3;
 
-//Êä³ö³£Á¿
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 module.exports.PROTOCOL_BROADCAST_REQUEST = PROTOCOL_BROADCAST_REQUEST;
 module.exports.PROTOCOL_PROPOSAL_PROVISION = PROTOCOL_PROPOSAL_PROVISION;
 module.exports.PROTOCOL_RESOURCE_REQUEST = PROTOCOL_RESOURCE_REQUEST;
@@ -63,10 +63,10 @@ var getMessageTypeBuffer = function(type){
 };
 
 /**
- * ÑéÖ¤Ð­ÒéÍ·¡£
- * @param block ½ÓÊÕµ½µÄÐÅÏ¢°ü. 
- * @return µ±Ð­ÒéÍ·²»ÕýÈ·Ê±£¬·µ»Ø Ð¡ÓÚµÈÓÚÁã µÄ±êÊ¶Âë¡£
- *			µ±Ð­ÒéÕýÈ·Ê±£¬·µ»Ø¸ÃÏûÏ¢µÄÖÖÀà±êÊ¶Âë¡£
+ * ï¿½ï¿½Ö¤Ð­ï¿½ï¿½Í·ï¿½ï¿½
+ * @param block ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½. 
+ * @return ï¿½ï¿½Ð­ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½È·Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ð¡ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½Ê¶ï¿½ë¡£
+ *			ï¿½ï¿½Ð­ï¿½ï¿½ï¿½ï¿½È·Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ë¡£
  *
  */
 var validateProtocolHead = function(block){
@@ -93,8 +93,9 @@ var validateProtocolHead = function(block){
     
 };
 
-//Êä³ö·½·¨
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 module.exports.validateProtocolHead = validateProtocolHead;
+module.exports.getProtocolHead = getProtocolHead;
 
 var test = function(){
 	var buf = getProtocolHead(PROTOCOL_REQUEST_PERMISSION);

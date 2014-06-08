@@ -12,6 +12,9 @@
     "Eclipse",
     "Nodeclipse"
   ],
+  "dependencies": {
+	  "bops" : "*"
+  },
   "author": "",
   "license": "BSD",
   "readmeFilename": "README.md"

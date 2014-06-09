@@ -16,4 +16,9 @@ public interface TransferMissionHandler {
 	 * @param mission
 	 */
 	public void addMission(TransferMission mission);
+	
+	/**
+	 * 开始服务
+	 */
+	public void start();
 }

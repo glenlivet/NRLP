@@ -17,9 +17,9 @@ var RequestBroadcast = module.exports = function RequestBroadcast(){
 };
 
 RequestBroadcast.prototype.toBuffer = function(){
-	//protocol ͷ
+	// get Protocol head byte array.
 	var headBuf = protocol_head.getProtocolHead(protocol_head.PROTOCOL_BROADCAST_REQUEST);
-	//��Դ�����ߵ�ID
+	// write the requesterId
 	var ridBuf = io_util.writeUTF8(this.requesterId);
 	//������Դ�����
 	var rrnBuf = io_util.writeUTF8(this.requestedResourceName);

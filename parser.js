@@ -11,47 +11,47 @@ var RequestBroadcast = require('./request_broadcast.js');
  * @param block	buffer
  * @param msgType 消息类型
  */
-var parse = function(block, msgType){
+var parse = function(block, cb){
 	var rtnCode = protocol_head.validateProtocolHead(block);
 	if(rtnCode <= 0 || rtnCode > 6){
 		throw new Error(PROTOCOL_ERROR_MSG);
 	}
-	
-	var rtnMsgObj = null;
+
 	switch(rtnCode){
 		//广播请求
 		case protocol_head.PROTOCOL_BROADCAST_REQUEST:
-			rtnMsgObj = parseBroadcastRequest(block);
+			parseBroadcastRequest(block, cb);
 			break;
 		//提供方案
 		case protocol_head.PROTOCOL_PROPOSAL_PROVISION:
-			rtnMsgObj = parseProposalProvision(block);
+			parseProposalProvision(block, cb);
 			break;
 		//请求资源
-		case protocol_head.PROTOCOL_RESOURCE_REQUEST:
-			rtnMsgObj = parseResourceRequest(block);
+		case protocol_head.PROTOCOL_OFFICIAL_REQUEST:
+			parseOfficialRequest(block, cb);
 			break;
 		//请求答复
-		case protocol_head.PROTOCOL_REQUEST_PERMISSION:
-			rtnMsgObj = parseRequestPermission(block);
+		case protocol_head.PROTOCOL_OFFICIAL_RESPONSE:
+			parseOfficialResponse(block, cb);
 			break;
 		//开始请求
-		case protocol_head.PROTOCOL_REQUEST_START:
-			rtnMsgObj = parseRequestStart(block);
-			break;
+		// case protocol_head.PROTOCOL_TRANSMISSION_REQUEST:
+			// rtnMsgObj = parseRequestStart(block);
+			// break;
 		//传输开始
-		case protocol_head.PROTOCOL_TRANSFER_START:
-			rtnMsgObj = parseTransferStart(block);
-			break;
+		// case protocol_head.PROTOCOL_FINAL_RESPONSE:
+			// rtnMsgObj = parseTransferStart(block);
+			// break;
 	}
-	
-	return rtnMsgObj;
+
 };
 
 /**
  * 将buffer解析为 BroadcastRequest 对象
  * @param block buffer
  */
-var parseBroadcastRequest = function(block){
-	
+var parseBroadcastRequest = function(block, cb){
+	RequestBroadcast.parse(block, cb);
 };
+
+exports.parse = parse;

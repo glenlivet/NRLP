@@ -1,14 +1,16 @@
 
 var mqtt = require('mqtt');
 //nrsl协议对象
-var nrsl = require('nrsl.js');
+var nrsl = require('./nrsl.js');
+
+var resources = {};
 
 var _clientId = 'res-provider-' + Math.floor(Math.random()*100);
 
 var mqttClient = mqtt.createClient(1883, 'localhost', {clientId : _clientId});
 
 var TOPIC_REQUEST_BROADCAST = 'nrlp/res/req/broadcast';
-var TOPIC_RESOURCE_REQUEST  = 'nrlp/res/req/listener/' + _clientId;
+var TOPIC_OFFICIAL_REQUEST  = 'nrlp/res/req/listener/' + _clientId;
 
 //监听连接
 mqttClient.on('connect', onMqttConnected.bind(mqttClient));
@@ -19,7 +21,7 @@ mqttClient.on('message', onMqttMessageArrived.bind(mqttClient));
  * 完成连接的回调：处理订阅主题
  */
 var onMqttConnected = function(){
-	var topics = [TOPIC_REQUEST_BROADCAST, TOPIC_RESOURCE_REQUEST];
+	var topics = [TOPIC_REQUEST_BROADCAST, TOPIC_OFFICIAL_REQUEST];
 	this.subscribe(topics, function(err, granted){
 		if(err){
 			console.error('Error occured during subscription!');
@@ -43,8 +45,8 @@ var onMqttMessageArrived = function(topic, message){
 	//当为 请求广播时
 	if(topic === TOPIC_REQUEST_BROADCAST){
 		onRequestBroadcastArrived.call(this, message);
-	}else if(topic === TOPIC_RESOURCE_REQUEST){
-		onResourceRequestArrived.call(this, message);
+	}else if(topic === TOPIC_OFFICIAL_REQUEST){
+		onOfficialRequestArrived.call(this, message);
 	}else {
 		console.warn('Unexpected MQTT message received. topic: ' + topic);
 	}
@@ -57,38 +59,38 @@ var onMqttMessageArrived = function(topic, message){
 var onRequestBroadcastArrived = function(block){
 	try{
 		//广播请求对象 //TODO 常量赋值
-		var requestBroadcast =  nrsl.parse(block, PROTOCOL_BROADCAST_REQUEST);
-		//做验证：包括是否含有该请求资源，该客户是否有权限等。
-		var rtnCode = validateRequestBroadcast(requestBroadcast);
-		//根据 rtnCode 做相应的回应
-		handleRequestBroadcast.call(this, rtnCode, requestBroadcast);
+		nrsl.parse(block, function(requestBroadcast){
+			//做验证：包括是否含有该请求资源，该客户是否有权限等。
+			var rtnCode = validateRequestBroadcast(requestBroadcast);
+			//根据 rtnCode 做相应的回应
+			handleRequestBroadcast.call(this, rtnCode, requestBroadcast);
+		});
+		
 	}catch(err){
 		console.error('Error occured when parsing a request broadcast!');
 		console.error(err);
 	}
 };
 
+var handleRequestBroadcast = function(reqBc){
+	//做验证：包括是否含有该请求资源，该客户是否有权限等。
+	var rtnCode = validateRequestBroadcast(reqBc);
+	if(rtnCode == 200){
+		//
+		var res = findResourceByResquest(reqBc);
+	}
+};
+
+var findResourceByResquest = function(reqBc){
+	
+};
+
 /**
  * 接收到 资源请求
  * @param block 
  */
-var onResourceRequestArrived = function(block){
+var onOfficialRequestArrived = function(block){
 	//TODO
-};
-
-/**
- * 处理 请求广播
- * @param requestBroadcast 请求广播对象
- */
-var handleRequestBroadcast = function(rtnCode, requestBroadcast){
-	if(rtnCode === 200){
-		//验证通过
-		//构建ResourceTranmissionProposal对象
-		//将该对象发送出去
-	}else {
-		console.info('RequestBroadcast validation results as rtnCode = ' + rtnCode);
-		//TODO 处理其他rtnCode
-	}
 };
 
 /**

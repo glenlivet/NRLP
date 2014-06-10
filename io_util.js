@@ -3,7 +3,7 @@
 var writeUTF8 = function(string){
 	var strLen = Buffer.byteLength(string);
 	var buf = new Buffer(strLen + 2);
-	//д��string�ı��س�
+	// write the byte length of the string
 	buf.writeUInt16BE(strLen, 0);
 	buf.write(string, 2);
 	return buf;

@@ -4,16 +4,14 @@ var bops			= require('bops');
 var io_util			= require('./io_util.js');
 
 var RequestBroadcast = module.exports = function RequestBroadcast(){
-	//��Դ�����ߵ�ID
+	
 	this.requesterId = null;
-	//������Դ�����
+	
 	this.requestedResourceName = null;
-	//������Դ������
+	
 	this.requestedResourceType = null;
-	//����Ĵ��䷽ʽ
+	
 	this.transTypeRequirement = null;
-	//���������URL
-	this.proposalDropLocation = null;
 };
 
 RequestBroadcast.prototype.toBuffer = function(){
@@ -21,18 +19,16 @@ RequestBroadcast.prototype.toBuffer = function(){
 	var headBuf = protocol_head.getProtocolHead(protocol_head.PROTOCOL_BROADCAST_REQUEST);
 	// write the requesterId
 	var ridBuf = io_util.writeUTF8(this.requesterId);
-	//������Դ�����
+	// write the resource name
 	var rrnBuf = io_util.writeUTF8(this.requestedResourceName);
-	//������Դ������
+	// write resource type
 	var rrtBuf = new Buffer(2);
 	rrtBuf.writeUInt16BE(this.requestedResourceType, 0);
-	//����Ĵ��䷽ʽ
+	// write the transmission type
 	var ttrBuf = new Buffer(1);
 	ttrBuf.writeUInt8(this.transTypeRequirement, 0);
-	//���������URL
-	var pdlBuf = io_util.writeUTF8(this.proposalDropLocation);
 	
-	return bops.join([headBuf, ridBuf, rrnBuf, rrtBuf, ttrBuf, pdlBuf]);
+	return bops.join([headBuf, ridBuf, rrnBuf, rrtBuf, ttrBuf]);
 };
 
 RequestBroadcast.parse = function(block, cb){
@@ -52,10 +48,6 @@ RequestBroadcast.parse = function(block, cb){
 			var rest3 = rest2.slice(2);
 			//retrieve transTypeRequirement
 			rtn.transTypeRequirement = rest3.readUInt8(0);
-			//remove this part
-			var rest4 = rest3.slice(1);
-			//retrieve proposalDropLocation
-			rtn.proposalDropLocation = io_util.readUTF8Sync(rest4);
 			cb(rtn);
 		});
 	});
@@ -85,10 +77,6 @@ RequestBroadcast.parseSync = function(block){
 	buf = buf.slice(2);
 	//retrieve transTypeRequirement
 	rtn.transTypeRequirement = buf.readUInt8(0);
-	//remove this part
-	buf = buf.slice(1);
-	//retrieve proposalDropLocation
-	rtn.proposalDropLocation = io_util.readUTF8Sync(buf);
 	
 	return rtn;
 };

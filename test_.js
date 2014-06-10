@@ -7,10 +7,10 @@ var RequestBroadcast = require('./request_broadcast.js');
 
 var bops = require('bops');
 
-var buf = bops.join([new Buffer('aa'), null || new Buffer(0), null || new Buffer('bb')]);
-
-console.log(buf.length);
-console.log(buf.toString());
+//var buf = bops.join([new Buffer('aa'), null || new Buffer(0), null || new Buffer('bb')]);
+//
+//console.log(buf.length);
+//console.log(buf.toString());
 //test protocol_head
 //protocol_head.test();
 
@@ -34,8 +34,7 @@ console.log(ss);
  */
 
 
-/**
- * 
+
 var rb = new RequestBroadcast();
 
 rb.requesterId = 'rid01';
@@ -46,33 +45,18 @@ rb.requestedResourceType = 1;
 
 rb.transTypeRequirement = 1;
 
-rb.proposalDropLocation = 'nrlp/proposal/listener/rid01';
- */
 
 
-/**
- * test efficiency about json and byte
- *
-var t1 = new Date().getTime();
+
+
 var buf = rb.toBuffer();
-console.log(new Date().getTime() - t1);
 console.log(buf.length);
 
-var t2 = new Date().getTime();
-var jsonBuf = new Buffer(JSON.stringify(rb));
-console.log(new Date().getTime() - t2);
-console.log(jsonBuf.length);
+RequestBroadcast.parse(buf, function(rbCp){
+	console.dir(rbCp);
+});
 
 
-var t3 = new Date().getTime();
-var rbCp = RequestBroadcast.parseSync(buf);
-console.log(new Date().getTime() - t3);
-console.dir(rbCp);
-
-var t4 = new Date().getTime();
-var rbCp2 = JSON.parse(jsonBuf.toString());
-console.log(new Date().getTime() - t4);
- */
 
 /*var buf  = rb.toBuffer();
 

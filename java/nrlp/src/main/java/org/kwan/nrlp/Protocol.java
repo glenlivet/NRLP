@@ -1,6 +1,7 @@
 package org.kwan.nrlp;
 
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
@@ -56,11 +57,58 @@ public class Protocol {
 		return baos.toByteArray();
 	}
 	
+	/**
+	 * grabbed from org.eclipse.paho.client.mqttv3.internal.wire.MqttWireMessage
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static byte[] encodeMBI(long number){
+		int numBytes = 0;
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		// Encode the remaining length fields in the four bytes
+		do {
+			byte digit = (byte)(number % 128);
+			number = number / 128;
+			if (number > 0) {
+				digit |= 0x80;
+			}
+			bos.write(digit);
+			numBytes++;
+		} while ( (number > 0) && (numBytes<4) );
+		
+		return bos.toByteArray();
+	}
+	
+	/**
+	 * grabbed from org.eclipse.paho.client.mqttv3.internal.wire.MqttWireMessage
+	 * 
+	 * @param in
+	 * @return
+	 * @throws IOException
+	 */
+	public static MultiByteInteger readMBI(DataInputStream in) throws IOException {
+		byte digit;
+		long msgLength = 0;
+		int multiplier = 1;
+		int count = 0;
+		
+		do {
+			digit = in.readByte();
+			count++;
+			msgLength += ((digit & 0x7F) * multiplier);
+			multiplier *= 128;
+		} while ((digit & 0x80) != 0);
+		
+		return new MultiByteInteger(msgLength, count);
+	}
+	
 	public static void main(String[] args) throws IOException {
 		byte[] bs = getProtocolHead(PROTOCOL_OFFICIAL_RESPONSE);
 		for(int i=0;i<bs.length; i++){
 			System.out.println(bs[i]);
 		}
+		
 	}
 	
 	

@@ -6,7 +6,7 @@ var ResourceRequester = require('../lib/resource_requester.js');
 var fs = require('fs');
 
 var opts = {
-		clientId : 'test_requester001'
+		clientId : 'Shulai.Zhang'
 };
 
 var resRequester = new ResourceRequester(opts);

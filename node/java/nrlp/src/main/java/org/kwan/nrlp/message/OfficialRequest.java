@@ -2,6 +2,8 @@ package org.kwan.nrlp.message;
 
 public class OfficialRequest {
 	
-	private 
+	private String requesterId;
+	
+	private int 
 	
 }

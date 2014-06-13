@@ -9,7 +9,7 @@ var io_util = require('./io_util.js');
 var bops = require('bops');
 var fs = require('fs');
 
-var TALK_TIME = 4000;
+var TALK_TIME = 5000;
 
 var resources = {};
 
@@ -24,9 +24,9 @@ var TOPIC_REQUEST_BROADCAST = 'nrlp/res/req/broadcast';
 var TOPIC_OFFICIAL_REQUEST = 'nrlp/res/req/listener/' + _clientId;
 var TOPIC_OFFICIAL_RESPONSE = 'nrlp/res/resp/listener/';
 // kb/s
-var TRANSMISSION_SPEED = 3;
+var TRANSMISSION_SPEED = 5;
 
-var DEFAULT_TCP_PORT = 10122;
+var DEFAULT_TCP_PORT = 10177;
 var RESOURCE_TCP_LOCATION = '10.253.44.235' + ':' + DEFAULT_TCP_PORT;
 
 /**
@@ -88,12 +88,17 @@ mqttClient.on('connect', onMqttConnected.bind(mqttClient));
 
 mqttClient.on('message', onMqttMessageArrived.bind(mqttClient));
 
-var jpg = new FileResource("test", "../13.jpg");
+var jpg = new FileResource("London", "../13.jpg");
 jpg.addToRepository(resources);
 
-var jpg2 = new FileResource("Desert", "../Desert.jpg");
+var jpg2 = new FileResource("Koala", "../Koala.jpg");
 jpg2.addToRepository(resources);
 
+var jpg3 = new FileResource("Cristiano", "../Cristiano.jpg");
+jpg3.addToRepository(resources);
+
+var jpg4 = new FileResource("German", "../German.jpg");
+jpg4.addToRepository(resources);
 
 /**
  * ���յ� ����㲥
@@ -440,7 +445,7 @@ var resumableTransfer = function(fd, c, fileSize, offset) {
 
 	(function loop(bytesSent) {
 		setTimeout(function() {
-			timer = 1000;
+			timer = 100;
 			// the bytes out after this time
 			var bytesOut = bytesSent + chunkSize;
 			//

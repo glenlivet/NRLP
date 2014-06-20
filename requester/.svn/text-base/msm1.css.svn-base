@@ -1,0 +1,101 @@
+
+#begin {  top:35em;left:15em;width:5em;height:3em;}
+#activity1 { top:25em; left:15em;}
+#activity2 { top:40em;left:50em; }
+#activity3 { top:25em; left:30em;}
+#activity4 {top:10em;left:50em;}
+#progress {top:25em;left:60em;}
+/* #label{top:5em ; left:5em;background:red;} */
+/*编辑此次样式，下面的demo就会及时生效*/
+.linear-gradient{
+/*彩虹条*/
+background:-moz-linear-gradient(right, blue ,white 100% ,green );/*Firefox*/
+background:-webkit-gradient(linear,right,fromcolor-stop(blue) , color-stop(white) 100% ,color-stop(green) );/*webkit，旧的写法*/
+background:-webkit-linear-gradient(right, blue ,white 100%, green );/*webkit*/
+background:-ms-linear-gradient(right, blue ,white 100%, green );/*IE 10+*/
+background:-o-linear-gradient(right, blue ,white 100%, green );/*opera*/
+background:linear-gradient(right, blue ,white 100%, green );/*标准写法*/
+}
+
+
+body {
+    padding:0;
+    margin:0;
+    background-color:white;    
+    font-family:'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;    
+    background-color:#eaedef;
+   
+}
+
+ #main {  
+  margin-top:44px;
+  position: relative;
+  font-size: 80%;    
+}
+#render {   
+	background-color:#fff;	    
+}
+
+.component { 
+  text-align:center;
+  vertical-align:middle;
+  cursor:pointer;
+  border:1px solid #346789; 
+  border-radius:0.5em;        
+  opacity:0.8; 
+  filter:alpha(opacity=80);
+  background-color:white;
+  color:black;
+  padding:0.5em;   
+  font-size:0.8em;
+   position:absolute; 
+}
+
+.component:hover {
+    border:1px solid #123456;
+    box-shadow: 2px 2px 19px #444;
+   -o-box-shadow: 2px 2px 19px #444;
+   -webkit-box-shadow: 2px 2px 19px #444;
+   -moz-box-shadow: 2px 2px 19px #fff;
+    opacity:0.8;
+    filter:alpha(opacity=90);
+}
+
+.window {
+	vertical-align:middle;
+	text-align:center;
+	z-index:24;
+    background-color:white;
+    border:1px solid #346789;
+    box-shadow: 2px 2px 19px #e0e0e0;
+    -o-box-shadow: 2px 2px 19px #e0e0e0;
+    -webkit-box-shadow: 2px 2px 19px #e0e0e0;
+    -moz-box-shadow: 2px 2px 19px #e0e0e0;
+    -moz-border-radius:0.5em;
+    border-radius:0.5em;        
+    position:absolute;    
+    color:black;
+    padding:0.5em;
+    width:6em; 
+    height:5em;
+    line-height: 3em; 
+    font-size:0.8em;
+    -webkit-transition: -webkit-box-shadow 0.15s ease-in;
+    -moz-transition: -moz-box-shadow 0.15s ease-in;
+    -o-transition: -o-box-shadow 0.15s ease-in;
+    transition: box-shadow 0.15s ease-in;
+}
+
+.window:hover {
+    border:1px solid #123456;
+    box-shadow: 2px 2px 19px #444;
+   -o-box-shadow: 2px 2px 19px #444;
+   -webkit-box-shadow: 2px 2px 19px #444;
+   -moz-box-shadow: 2px 2px 19px #fff;
+    opacity:0.8;
+    filter:alpha(opacity=90);
+}
+
+.window a {
+    font-family:helvetica;
+}

@@ -1,0 +1,22 @@
+{
+  "main": "msm1.html",
+  "name": "ngbf-t-monitor",
+  "node-main" : "main.js",
+  "description": "ngbf-t-monitor",
+  "version": "2.0.0.0",
+  "keywords": [ "ngbf-t-monitor" ],
+  "single-instance": false,
+  "dom_storage_quota": 80,
+  "window": {
+    "title": "ngbf-t-monitor",
+    "icon": "link.png",
+    "toolbar": true,
+    "frame": true,
+    "width": 1200,
+    "height": 800,
+    "position": "center"
+  },
+  "webkit": {
+    "plugin": true
+  }
+}

@@ -1,0 +1,74 @@
+/***
+Login page
+***/
+
+/* logo page */
+.login {
+   background-color: #EFF2F7 !important;
+}
+.login .logo {
+  width: 247px;
+  margin: 0 auto;   
+  margin-top:60px;
+  padding: 15px;
+  text-align: center;
+}  
+.login .content {
+  background-color:#fff; 
+  width: 591px;
+  text-align: center;
+  margin-bottom: 0px;
+  padding: 30px;  
+  padding-top: 20px;  
+  padding-bottom: 15px;  
+  height:550px;
+}
+.login .content h3 {
+  color: #000;
+}
+.login .content h4  {
+  color: #555;
+}
+.login .content p {
+  color: #222;
+}
+.login .content .input-icon {
+  border-left: 2px solid #35aa47 !important;
+}
+.window {
+	vertical-align:middle;
+	text-align:center;
+	z-index:24;
+    background-color:white;
+    border:1px solid #346789;
+    box-shadow: 2px 2px 19px #e0e0e0;
+    -o-box-shadow: 2px 2px 19px #e0e0e0;
+    -webkit-box-shadow: 2px 2px 19px #e0e0e0;
+    -moz-box-shadow: 2px 2px 19px #e0e0e0;
+    -moz-border-radius:0.5em;
+    border-radius:0.5em;        
+    color:black;
+    padding:0.5em;
+    width:6em; 
+    height:5em;
+    line-height: 3em; 
+    font-size:0.8em;
+    -webkit-transition: -webkit-box-shadow 0.15s ease-in;
+    -moz-transition: -moz-box-shadow 0.15s ease-in;
+    -o-transition: -o-box-shadow 0.15s ease-in;
+    transition: box-shadow 0.15s ease-in;
+}
+
+.window:hover {
+    border:1px solid #123456;
+    box-shadow: 2px 2px 19px #444;
+   -o-box-shadow: 2px 2px 19px #444;
+   -webkit-box-shadow: 2px 2px 19px #444;
+   -moz-box-shadow: 2px 2px 19px #fff;
+    opacity:0.8;
+    filter:alpha(opacity=90);
+}
+
+.window a {
+    font-family:helvetica;
+}

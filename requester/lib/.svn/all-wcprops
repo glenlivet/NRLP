@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib
+END
+request_task.js
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/request_task.js
+END
+generator.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/generator.js
+END
+file_resource.js
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/file_resource.js
+END
+resource.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/resource.js
+END
+resource_requester.js
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/ngbf/!svn/ver/50967/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/resource_requester.js
+END
+nrlp.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/nrlp.js
+END
+protocol_head.js
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/protocol_head.js
+END
+resource_provider.js
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/resource_provider.js
+END
+provider2.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/provider2.js
+END
+code_generator.js
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/code_generator.js
+END
+provider1.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/provider1.js
+END
+parser.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/parser.js
+END
+io_util.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/io_util.js
+END
+provider_cp.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/provider_cp.js
+END
+protocol.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/ngbf/!svn/ver/50933/%E5%B7%A5%E4%BD%9C%E5%BA%93/source/ngbf-t-monitor/file/lib/protocol.js
+END

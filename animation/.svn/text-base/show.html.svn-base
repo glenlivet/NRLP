@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Login Page</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+<link href="bootstrap.css" rel="stylesheet"	type="text/css" />
+<link href="bootstrap.responsive.css" rel="stylesheet"	type="text/css" />
+<link href="show.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	.center{
+		margin-left: auto !important;
+		margin-right: auto !important;
+		float:none !important;
+		display: block;
+		text-align:center;
+	}
+</style>
+</head>
+<body class="login">
+<nav id="ngbf-header-bar" role="navigation"></nav>
+	<!-- BEGIN LOGO -->
+	<div class="logo">
+	</div>
+	<!-- END LOGO -->
+	<!-- BEGIN LOGIN -->
+	<div class="content center">
+		<!-- BEGIN LOGIN FORM -->
+		<form class="form-vertical login-form" >
+				
+			<div class="form-group" style="margin-top:20px;">
+  			 	<input type="text" class="form-control pull-left" id="resource" placeholder="resource" style="width:300px;" >
+				<button type="button" class="btn pull-right col-md-3" style="background-color:#35AA47" onclick="doSearch()">
+				<font color='white'>Button</font> 
+				</button>
+ 			</div>
+ 			<div class="form-group pull-left" style="margin-top:20px;" >
+  			 	 <div class="progress window" id="progress" style="margin-bottom:0px;width:300px;height:30px;background-color:#e0e0e0">
+					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+				aria-valuenow="0" style="width:0%"><span>0%</span></div>
+			</div>
+ 			</div>
+			<div class="window pull-left" style="width:530px;height:400px;" id="show_pic">
+				<img src="" width="500px" height="380px"/>
+			</div>
+		
+		</form>
+		
+	</div> 
+		<script type='text/javascript' src='jquery-1.9.0-min.js'></script>
+	<script type='text/javascript' src='jquery-ui-1.9.2-min.js'></script>
+	<script type='text/javascript' src='jquery.ui.touch-punch.min.js'></script>
+	<script type='text/javascript' src='jquery.jsPlumb-1.5.2.js'></script>
+	<script type='text/javascript' src='bootstrap.min.js'></script>	
+	<script src='show.js'></script>
+</body>
+</html>
